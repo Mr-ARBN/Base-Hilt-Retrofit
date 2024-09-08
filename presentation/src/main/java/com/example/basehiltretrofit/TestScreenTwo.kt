@@ -56,7 +56,8 @@ fun TestScreenTwo(
 
             is UiState.Success -> {
                 FriendsScreen(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
                         .background(Color.Red)
                         .padding(innerPadding),
                     input = state.data.name + " $name",
@@ -64,12 +65,15 @@ fun TestScreenTwo(
             }
 
             is UiState.Error -> {
-                Button(
-                    modifier = Modifier.background(Color.White),
-                    content = { Text(text = "Retry") },
-                    onClick = { retry() }
-                )
-                Toast.makeText(context, state.errorMessage, Toast.LENGTH_LONG).show()
+                Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
+                    Button(
+                        modifier = Modifier
+                            .align(Alignment.Center),
+                        content = { Text(text = "Retry") },
+                        onClick = { retry() }
+                    )
+                    Toast.makeText(context, state.errorMessage, Toast.LENGTH_LONG).show()
+                }
             }
 
             else -> Unit
