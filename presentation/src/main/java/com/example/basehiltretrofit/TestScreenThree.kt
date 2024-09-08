@@ -43,7 +43,7 @@ fun TestScreenThree(
 ) {
     val context = LocalContext.current
 
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+    Scaffold(modifier = Modifier.fillMaxSize()) { paddingValue ->
         when (state) {
             UiState.Loading -> {
                 Box(modifier = Modifier.fillMaxSize()) {
@@ -58,17 +58,20 @@ fun TestScreenThree(
                 SettingsScreen(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.Cyan)
-                        .padding(innerPadding),
+                        .background(Color.Magenta)
+                        .padding(paddingValue),
                     input = state.data.name + " $name",
                 )
             }
 
             is UiState.Error -> {
-                Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.White)
+                ) {
                     Button(
-                        modifier = Modifier
-                            .align(Alignment.Center),
+                        modifier = Modifier.align(Alignment.Center),
                         content = { Text(text = "Retry") },
                         onClick = { retry() }
                     )
@@ -83,8 +86,12 @@ fun TestScreenThree(
 
 @Composable
 fun SettingsScreen(modifier: Modifier, input: String) {
-    Text(
-        modifier = modifier,
-        text = input
-    )
+    Box(
+        modifier = modifier
+    ) {
+        Text(
+            modifier = Modifier.align(Alignment.Center),
+            text = input
+        )
+    }
 }

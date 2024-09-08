@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal abstract class UsecaseModule {
+internal abstract class UseCaseModule {
     @Binds
     abstract fun provideTestUseCase(testUseCaseImpl: TestUseCaseImpl): TestUseCase
 }

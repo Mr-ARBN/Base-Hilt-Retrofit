@@ -43,7 +43,7 @@ fun TestScreenTwo(
 ) {
     val context = LocalContext.current
 
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+    Scaffold(modifier = Modifier.fillMaxSize()) { paddingValue ->
         when (state) {
             UiState.Loading -> {
                 Box(modifier = Modifier.fillMaxSize()) {
@@ -59,7 +59,7 @@ fun TestScreenTwo(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.Red)
-                        .padding(innerPadding),
+                        .padding(paddingValue),
                     input = state.data.name + " $name",
                 )
             }
@@ -83,8 +83,12 @@ fun TestScreenTwo(
 
 @Composable
 fun FriendsScreen(modifier: Modifier, input: String) {
-    Text(
-        modifier = modifier,
-        text = input
-    )
+    Box(
+        modifier = modifier
+    ) {
+        Text(
+            modifier = Modifier.align(Alignment.Center),
+            text = input
+        )
+    }
 }

@@ -16,10 +16,8 @@ internal class TestUseCaseImpl @Inject constructor(
     private val testUserDao: TestUserDao,
     private val testRepo: TestRepo
 ) : TestUseCase {
-
     override suspend fun testApi(testRequest: TestRequest): Flow<UiState<TestResponse>> = flow {
         emit(UiState.Loading)
-
         val request = TestRequestEntity(
             cPUModel = testRequest.cPUModel,
             name = testRequest.name,
@@ -28,8 +26,7 @@ internal class TestUseCaseImpl @Inject constructor(
             hardDiskSize = testRequest.hardDiskSize
         )
         when (val response = testRepo.testApi(request)) {
-            is Result.Error -> emit(UiState.Error("ERROR"))
-
+            is Result.Error -> emit(UiState.Error("There Is Something Wrong"))
             is Result.Success -> TestResponse(
                 createdAt = response.data.createdAt,
                 name = response.data.name,

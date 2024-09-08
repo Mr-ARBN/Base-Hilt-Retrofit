@@ -1,5 +1,6 @@
 package com.example.basehiltretrofit.navigation
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.navigation.NavController
@@ -20,6 +21,7 @@ object Settings
 
 @Composable
 fun TestNavHost(
+    paddingValues: PaddingValues,
     navHostController: NavHostController,
     startDestination: Any
 ) {

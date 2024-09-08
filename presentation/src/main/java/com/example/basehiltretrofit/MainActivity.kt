@@ -1,10 +1,8 @@
 package com.example.basehiltretrofit
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
@@ -33,10 +31,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             val navController = rememberNavController()
             var selectedItem by rememberSaveable { mutableIntStateOf(0) }
@@ -55,6 +51,7 @@ class MainActivity : ComponentActivity() {
                                     selected = selectedItem == index,
                                     icon = {
                                         Icon(
+                                            modifier = Modifier,
                                             imageVector = if (selectedItem == index) iconSelected[index] else icons[index],
                                             contentDescription = ""
                                         )
@@ -71,29 +68,10 @@ class MainActivity : ComponentActivity() {
                                         selectedItem = index
                                     })
                             }
-
-                            /*listOf("Profile", "FriendList", "Setting").forEach {
-                                Column(
-                                    modifier = Modifier
-                                        .weight(1f)
-                                        .clickable {
-                                            when (it) {
-                                                "Profile" -> navController.navigate(Profile)
-                                                "FriendList" -> navController.navigate(FriendsList)
-                                                "Setting" -> navController.navigate(Settings)
-                                            }
-                                        },
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-
-//                            Image(imageVector = icon, contentDescription = "")
-                                    Text(text = it)
-                                }
-                            }*/
-
                         }
-                    }) {
+                    }) { paddingValues ->
                     TestNavHost(
+                        paddingValues = paddingValues,
                         navHostController = navController,
                         startDestination = Profile
                     )

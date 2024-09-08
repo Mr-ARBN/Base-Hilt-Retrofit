@@ -10,7 +10,7 @@ abstract class BaseRepository {
             val response: Response<T> = apiCall()
             val body: T? = response.body()
             when {
-                response.code() == 204 -> Result.Success("No Content Success" as T)
+                response.code() == 204 -> Result.Success(null as T)
                 response.isSuccessful && body != null -> Result.Success(body)
                 else -> {
                     val errorBody: ResponseBody? = response.errorBody()

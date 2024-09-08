@@ -5,18 +5,18 @@ import com.squareup.moshi.JsonClass
 
 
 @JsonClass(generateAdapter = true)
-data class TestResponse(
+data class TestResponseEntity(
     @Json(name = "createdAt")
     val createdAt: String,
     @Json(name = "data")
-    val data: TestDataResponse?,
+    val data: TestDataResponseEntity?,
     @Json(name = "id")
     val id: String,
     @Json(name = "name")
     val name: String
 ) {
     @JsonClass(generateAdapter = true)
-    data class TestDataResponse(
+    data class TestDataResponseEntity(
         @Json(name = "CPU model")
         val cPUModel: String,
         @Json(name = "Hard disk size")

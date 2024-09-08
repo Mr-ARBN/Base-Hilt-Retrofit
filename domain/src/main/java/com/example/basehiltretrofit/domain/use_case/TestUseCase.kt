@@ -6,6 +6,5 @@ import com.example.basehiltretrofit.domain.utility.UiState
 import kotlinx.coroutines.flow.Flow
 
 interface TestUseCase {
-
     suspend fun testApi(testRequest: TestRequest): Flow<UiState<TestResponse>>
 }
