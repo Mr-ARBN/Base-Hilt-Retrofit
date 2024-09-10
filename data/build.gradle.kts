@@ -3,11 +3,11 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
-//    alias(libs.plugins.room)
+    alias(libs.plugins.room)
 }
 
 android {
-    namespace = "com.example.myapplication.data"
+    namespace = "mr.arbn.myapplication.data"
     compileSdk = 34
 
     defaultConfig {
@@ -33,9 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    /*room {
+    room {
         schemaDirectory("$projectDir/schemas")
-    }*/
+    }
 }
 
 dependencies {

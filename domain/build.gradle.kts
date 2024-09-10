@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.myapplication.domain"
+    namespace = "mr.arbn.myapplication.domain"
     compileSdk = 34
 
     defaultConfig {
